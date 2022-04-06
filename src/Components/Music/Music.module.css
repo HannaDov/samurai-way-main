@@ -1,7 +1,13 @@
-.content {
-    grid-area: c;
-    background-color: darkseagreen;
+
+.article {
+    padding: 10px;
+
+
 }
-.content img {
-    width: 900px;
+
+.article img {
+width: 200px;
+    padding: 20px;
+
+
 }
