@@ -3,40 +3,48 @@ import './App.css';
 import {Header} from "./Components/Header/Header";
 import {NavBar} from "./Components/NavBar/NavBar";
 import {Profile} from "./Components/Profile/Profile";
-import {BrowserRouter, Route} from "react-router-dom";
+import {Route} from "react-router-dom";
 import {Dialogs} from "./Components/Dialogs/Dialogs";
 import {Music} from "./Components/Music/Music";
 import {News} from "./Components/News/News";
 import {Setting} from "./Components/Setting/Setting";
+import {RootStateType} from "./redux/state";
+import {SideBar} from "./Components/SideBar/SideBar";
 
+export type AppStateType = {
+    appState: RootStateType
+}
 
-const App = () => {
+const App: React.FC<AppStateType> = (props) => {
+
     return (
-        <BrowserRouter>
-            <div className="app-wrapper">
-                <Header/>
-                <NavBar/>
-                <div className="app-wrapper-content">
 
-                        <Route path='/dialogs' component={Dialogs}/>
+        <div className="app-wrapper">
+            <Header/>
+            <NavBar/>
+            <div className="app-wrapper-content">
 
-
-                        <Route path='/profile' component={Profile}/>
+                <Route path='/dialogs'
+                       render={() => <Dialogs state={props.appState.dialogPage}/>}/>
 
 
-                        <Route path='/news' component={News}/>
+                <Route path='/profile' render={() => <Profile state={props.appState.profilePage}/>}/>
 
 
-                        <Route path='/music' component={Music}/>
+                <Route path='/news' render={() => <News/>}/>
 
 
-                        <Route path='/setting' component={Setting}/>
+                <Route path='/music' render={() => <Music/>}/>
 
 
-                </div>
+                <Route path='/setting' render={() => <Setting/>}/>
+                <Route path='/friends' render={() => <SideBar/>}/>
+
 
             </div>
-        </BrowserRouter>
+
+        </div>
+
     )
 }
 
