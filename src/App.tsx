@@ -8,14 +8,24 @@ import {Dialogs} from "./Components/Dialogs/Dialogs";
 import {Music} from "./Components/Music/Music";
 import {News} from "./Components/News/News";
 import {Setting} from "./Components/Setting/Setting";
-import {RootStateType} from "./redux/state";
+import store, {RootStateType, StoreType, ActionTypes} from "./redux/state";
 import {SideBar} from "./Components/SideBar/SideBar";
+
 
 export type AppStateType = {
     appState: RootStateType
+    addNewPost: (postText: string) => void
+    updateNewPostText:(newText:string)=> void
+    store:StoreType
+    dispatch:(action:ActionTypes)=>void
+    addNewMessage:(messageText: string)=>void
+    updateNewMessageText:(newMessage: string)=>void
+
 }
 
 const App: React.FC<AppStateType> = (props) => {
+/*const state = props.store.getState();*/
+  
 
     return (
 
@@ -25,10 +35,21 @@ const App: React.FC<AppStateType> = (props) => {
             <div className="app-wrapper-content">
 
                 <Route path='/dialogs'
-                       render={() => <Dialogs state={props.appState.dialogPage}/>}/>
+                       render={() => <Dialogs store={store}
+                                              dialogPage={props.appState.dialogPage}
+                                              addNewMessage={props.store.addNewMessage.bind(props.store)}
+                                              updateNewMessageText={props.store.updateNewMessageText.bind(props.store)}
+                                              dispatch= {props.store.dispatch.bind(props.store)}
+                       />}
+                />
 
 
-                <Route path='/profile' render={() => <Profile state={props.appState.profilePage}/>}/>
+                <Route path='/profile' render={() => <Profile store={store} profilePage={props.appState.profilePage}
+                                                              addNewPost={props.store.addNewPost.bind(props.store)}
+                                                              updateNewPostText={props.store.updateNewPostText.bind(props.store)}
+                                                              dispatch= {props.store.dispatch.bind(props.store)}
+                                                              /*message={state.profilePage.messageForNewPost}*//>}
+                />
 
 
                 <Route path='/news' render={() => <News/>}/>
@@ -38,7 +59,7 @@ const App: React.FC<AppStateType> = (props) => {
 
 
                 <Route path='/setting' render={() => <Setting/>}/>
-                <Route path='/friends' render={() => <SideBar/>}/>
+                <Route path='/friends' render={() => <SideBar state={props.appState.sidebar}/>}/>
 
 
             </div>

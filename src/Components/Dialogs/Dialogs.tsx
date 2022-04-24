@@ -2,22 +2,35 @@ import React from 'react';
 import classes from './Dialogs.module.css';
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
- import {DialogPageType} from "../../redux/state";
+import {ActionTypes, DialogPageType, StoreType} from "../../redux/state";
 
 
-type DialogType={
-    state:DialogPageType
+type DialogType = {
+    store: StoreType
+    dialogPage: DialogPageType
+    addNewMessage: (messageText: string) => void
+    updateNewMessageText: (newMessage: string) => void
+    dispatch: (action: ActionTypes) => void
+
 }
-export const Dialogs:React.FC<DialogType>=(props) => {
+export const Dialogs: React.FC<DialogType> = (props) => {
 
-    let dialogsElement = props.state.dialogData.map(el=>
+    let dialogsElement = props.dialogPage.dialogData.map(el =>
 
-        <DialogItem  name={el.name} id={el.id}/>
+        <DialogItem key={el.id} name={el.name} id={el.id}/>
     )
 
 
-    let messageElement = props.state.messageData.map(el =>
-        <Message message={el.message}/>)
+    let messageElement = props.dialogPage.messageData.map(el =>
+        <Message key={el.id}
+                 message={el.message}
+                 addNewMessage={props.store.addNewMessage.bind(props.store)}
+                 messageText={props.dialogPage.messageData}
+                 newMessageText={props.dialogPage.newMessageText}
+                 updateNewMessageText={props.store.updateNewMessageText.bind(props.store)}
+                 dispatch={props.store.dispatch.bind(props.store)}
+        />)
+
 
     return (
         <div className={classes.dialogs}>
@@ -28,6 +41,7 @@ export const Dialogs:React.FC<DialogType>=(props) => {
 
             <div className={classes.messages}>
                 {messageElement}
+
 
             </div>
         </div>

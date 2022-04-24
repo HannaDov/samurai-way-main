@@ -1,11 +1,13 @@
 
 .active {
     color: gold;
+    padding: 10px;
 
 }
 
 .dialog {
     color: black;
+
 }
 
 .img {
@@ -13,4 +15,5 @@
     height: 50px;
     border-radius: 30px;
     margin-bottom: 5px;
+    padding: 1px;
 }

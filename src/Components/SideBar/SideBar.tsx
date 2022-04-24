@@ -1,11 +1,16 @@
 import React from 'react';
-import classes from './SideBar.module.css';
 
+import {SidebarType} from "../../redux/state";
 
-export const SideBar = () => {
+type SideBarType={
+    state: SidebarType
+}
+
+export const SideBar:React.FC<SideBarType> =(props) => {
+
     return (
         <div>
-         Friends
-        </div>
+            <h3>Friends</h3>
+           </div>
 )
 }
