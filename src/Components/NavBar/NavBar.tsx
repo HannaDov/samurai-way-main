@@ -22,7 +22,6 @@ export const NavBar = () => {
                 <NavLink to="/setting" activeClassName={classes.active}>Setting</NavLink>
 
             </div>
-
         </nav>
     )
 }

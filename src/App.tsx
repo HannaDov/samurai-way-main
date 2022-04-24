@@ -8,11 +8,13 @@ import {Dialogs} from "./Components/Dialogs/Dialogs";
 import {Music} from "./Components/Music/Music";
 import {News} from "./Components/News/News";
 import {Setting} from "./Components/Setting/Setting";
-import {RootStateType} from "./redux/state";
+import state, {postType, RootStateType} from "./redux/state";
 import {SideBar} from "./Components/SideBar/SideBar";
+
 
 export type AppStateType = {
     appState: RootStateType
+    addNewPost: (postText: string) => void
 }
 
 const App: React.FC<AppStateType> = (props) => {
@@ -28,7 +30,10 @@ const App: React.FC<AppStateType> = (props) => {
                        render={() => <Dialogs state={props.appState.dialogPage}/>}/>
 
 
-                <Route path='/profile' render={() => <Profile state={props.appState.profilePage}/>}/>
+                <Route path='/profile' render={() => <Profile state={props.appState.profilePage}
+                                                              addNewPost={props.addNewPost}
+                                                              /*message={state.profilePage.messageForNewPost}*//>}
+                />
 
 
                 <Route path='/news' render={() => <News/>}/>
