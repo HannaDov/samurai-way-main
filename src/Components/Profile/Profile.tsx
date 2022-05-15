@@ -9,8 +9,8 @@ export type ProfileType = {
     profilePage: ProfilePageType
     addNewPost: (postText: string) => void
     updateNewPostText: (newText: string) => void
-    store:StoreType
-    dispatch:(action:ActionTypes)=>void
+    store: StoreType
+    dispatch: (action: ActionTypes) => void
 
 }
 
@@ -24,10 +24,11 @@ export const Profile: React.FC<ProfileType> = (props) => {
                      addNewPost={props.store.addNewPost.bind(props.store)}
                      newPostText={props.profilePage.newPostText}
                      updateNewPostText={props.store.updateNewPostText.bind(props.store)}
-                     dispatch= {props.store.dispatch.bind(props.store)}
+                     dispatch={props.store.dispatch.bind(props.store)}
             />
-        </div>
 
+
+        </div>
 
     )
 }

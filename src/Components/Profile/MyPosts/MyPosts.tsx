@@ -18,9 +18,9 @@ export const MyPosts: React.FC<MyPostsType> = (props) => {
 
 
     const onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-        let text =e.currentTarget.value
-            /*props.updateNewPostText(text)*/
-     /*  props.dispatch({type: "UPDATE-NEW-POST-TEXT", newText:text})*/
+        let text = e.currentTarget.value
+        /*props.updateNewPostText(text)*/
+        /*  props.dispatch({type: "UPDATE-NEW-POST-TEXT", newText:text})*/
 
         props.dispatch(updateNewPostTextAC(text))
     }
@@ -45,6 +45,7 @@ export const MyPosts: React.FC<MyPostsType> = (props) => {
                 <div>
                     <button onClick={addPost}>Add Post</button>
                 </div>
+
             </div>
             <div className={classes.posts}>
                 {postElement}

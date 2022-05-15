@@ -41,9 +41,8 @@ export const Dialogs: React.FC<DialogType> = (props) => {
 
             <div className={classes.messages}>
                 {messageElement}
-
-
             </div>
         </div>
     )
 }
+

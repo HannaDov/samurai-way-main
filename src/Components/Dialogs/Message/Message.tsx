@@ -1,7 +1,6 @@
 import React, {ChangeEvent} from 'react';
 import classes from './Message.module.css';
-import {ActionTypes, messageDataType,  addNewMessageAC,updateNewMessageTextAC} from "../../../redux/state";
-
+import {ActionTypes, messageDataType, addNewMessageAC, updateNewMessageTextAC} from "../../../redux/state";
 
 
 type MessageType = {
@@ -11,7 +10,7 @@ type MessageType = {
     message: string
     newMessageText: string
     updateNewMessageText: (newMessage: string) => void
-    dispatch:(action:ActionTypes)=>void
+    dispatch: (action: ActionTypes) => void
 }
 
 export const Message: React.FC<MessageType> = (props) => {
@@ -39,10 +38,8 @@ export const Message: React.FC<MessageType> = (props) => {
                     }
 
                 )}*/}
-
             </textarea>
-
-        {props.message}
+                {props.message}
             </div>
             <div>
                 <button onClick={addMessage}>Add message</button>

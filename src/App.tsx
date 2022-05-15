@@ -48,7 +48,7 @@ const App: React.FC<AppStateType> = (props) => {
                                                               addNewPost={props.store.addNewPost.bind(props.store)}
                                                               updateNewPostText={props.store.updateNewPostText.bind(props.store)}
                                                               dispatch= {props.store.dispatch.bind(props.store)}
-                                                              /*message={state.profilePage.messageForNewPost}*//>}
+                                                              />}
                 />
 
 
