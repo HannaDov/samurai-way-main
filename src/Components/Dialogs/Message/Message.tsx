@@ -1,6 +1,6 @@
 import React, {ChangeEvent} from 'react';
 import classes from './Message.module.css';
-import {ActionTypes, messageDataType, addNewMessageAC,updateNewMessageTextAC} from "../../../redux/state";
+import {ActionTypes, messageDataType,  addNewMessageAC,updateNewMessageTextAC} from "../../../redux/state";
 
 
 

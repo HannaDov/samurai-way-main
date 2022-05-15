@@ -5,10 +5,6 @@ import App from "./App";
 import React from "react";
 
 
-
-
-
-
 export const renderTree = () => {
     ReactDOM.render(
         <BrowserRouter>

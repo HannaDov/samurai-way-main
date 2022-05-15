@@ -24,8 +24,8 @@ export type AppStateType = {
 }
 
 const App: React.FC<AppStateType> = (props) => {
-/*const state = props.store.getState();*/
-  
+
+
 
     return (
 

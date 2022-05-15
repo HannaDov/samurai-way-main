@@ -1,5 +1,7 @@
 import classes from './Post.module.css';
 import React from 'react';
+
+
 type PostPropsType={
     message: string
     likes: number

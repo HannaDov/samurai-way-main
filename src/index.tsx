@@ -4,7 +4,6 @@ import {renderTree} from './render'
 // @ts-ignore
 /*import * as serviceWorker from './serviceWorker';*/
 
-
 store.subscribe(renderTree);
 renderTree();
 
