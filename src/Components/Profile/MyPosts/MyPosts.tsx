@@ -1,13 +1,14 @@
-import React, {ChangeEvent} from 'react';
+import React, {ChangeEvent}  from 'react';
 import classes from './MyPosts.module.css';
 import {Post} from "./Post/Post";
-import {ActionTypes, addNewPostAC, postType, updateNewPostTextAC} from "../../../redux/state";
+import {ActionTypes, postType} from "../../../redux/store";
+import {addNewPostAC, updateNewPostTextAC} from "../../../redux/reducerPropfilePage";
 
 type MyPostsType = {
     post: Array<postType>
-    addNewPost: (postText: string) => void
+   /* addNewPost: (postText: string) => void*/
     newPostText: string
-    updateNewPostText: (newText: string) => void
+    /*updateNewPostText: (newText: string) => void*/
     dispatch: (action: ActionTypes) => void
 }
 export const MyPosts: React.FC<MyPostsType> = (props) => {
@@ -18,13 +19,16 @@ export const MyPosts: React.FC<MyPostsType> = (props) => {
 
 
     const onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+
         let text = e.currentTarget.value
         /*props.updateNewPostText(text)*/
         /*  props.dispatch({type: "UPDATE-NEW-POST-TEXT", newText:text})*/
 
         props.dispatch(updateNewPostTextAC(text))
+
     }
     const addPost = () => {
+        debugger
         /*props.addNewPost(props.newPostText);*/
         props.dispatch(addNewPostAC(props.newPostText))
 
@@ -50,6 +54,7 @@ export const MyPosts: React.FC<MyPostsType> = (props) => {
             <div className={classes.posts}>
                 {postElement}
             </div>
+
         </div>
 
     )

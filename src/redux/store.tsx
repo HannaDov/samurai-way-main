@@ -1,8 +1,9 @@
+import {addNewPostAC, reducerProfilePage, reducerProfilePageType, updateNewPostTextAC} from "./reducerPropfilePage";
+import {addNewMessageAC, reducerDialogPage, reducerDialogPageType, updateNewMessageTextAC} from "./reducerDialogPage"
 
 export type messageDataType = {
     id: number
     message: string
-
 }
 export type dialogDataType = {
     id: number
@@ -18,28 +19,23 @@ export type ProfilePageType = {
 
     newPostText: string
 }
-
 export type DialogPageType = {
     dialogData: Array<dialogDataType>
     messageData: Array<messageDataType>
     newMessageText: string
-
 }
 export type SidebarType = {
     friendsData: Array<friendsDataType>
 }
-
 type friendsDataType = {
     id: number
     name: string
 }
-
 export type RootStateType = {
     profilePage: ProfilePageType
     dialogPage: DialogPageType
     sidebar: SidebarType
 }
-
 export type StoreType = {
     _state: RootStateType
     updateNewPostText: (newText: string) => void
@@ -51,13 +47,12 @@ export type StoreType = {
     addNewMessage: (messageText: string) => void
     updateNewMessageText: (newMessage: string) => void
 }
-
-export type ActionTypes = ReturnType<typeof addNewPostAC> | ReturnType<typeof updateNewPostTextAC> |
-    ReturnType<typeof addNewMessageAC>| ReturnType<typeof updateNewMessageTextAC>
-
-export const addNewPostAC = (postText: string) => {
+/*export type ActionTypes =ReturnType<typeof addNewPostAC> | ReturnType<typeof updateNewPostTextAC> |
+    ReturnType<typeof addNewMessageAC>| ReturnType<typeof updateNewMessageTextAC>*/
+export type ActionTypes=reducerDialogPageType|reducerProfilePageType
+/*export const addNewPostAC = (postText: string) => {
     return {
-        type: "ADD -NEW-POST",
+        type: "ADD-NEW-POST",
         postText: postText
     } as const
 }
@@ -80,7 +75,7 @@ export const updateNewMessageTextAC=(newMessage:string)=>{
         newMessage:newMessage
 
     }as const
-}
+}*/
 const store: StoreType = {
     _state: {
         profilePage: {
@@ -161,7 +156,11 @@ const store: StoreType = {
         return this._state
     },
     dispatch(action) {
-        if (action.type === "ADD -NEW-POST") {
+
+        this._state.profilePage=reducerProfilePage(this._state.profilePage, action)
+        this._state.dialogPage=reducerDialogPage(this._state.dialogPage, action)
+        this._onChange()
+       /* if (action.type === "ADD-NEW-POST") {
             const newPost: postType = {
                 id: new Date().getTime(),
                 message: action.postText,
@@ -187,10 +186,9 @@ const store: StoreType = {
         } else if (action.type === "UPDATE-NEW-MESSAGE-TEXT"){
             this._state.dialogPage.newMessageText =action. newMessage;
             this._onChange()
-        }
+        }*/
     }
 
 }
-
 
 export default store;
