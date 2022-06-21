@@ -1,15 +1,14 @@
-import React, {ChangeEvent}  from 'react';
+import React, {ChangeEvent} from 'react';
 import classes from './MyPosts.module.css';
 import {Post} from "./Post/Post";
-import {ActionTypes, postType} from "../../../redux/store";
-import {addNewPostAC, updateNewPostTextAC} from "../../../redux/reducerPropfilePage";
+
 
 type MyPostsType = {
-    post: Array<postType>
-   /* addNewPost: (postText: string) => void*/
-    newPostText: string
-    /*updateNewPostText: (newText: string) => void*/
-    dispatch: (action: ActionTypes) => void
+    onPostChange: (text: string) => void
+    addPost:(newPostText:string)=>void
+    newPostText:string
+    post: Array<{ id:number, message:string, likesCount:number }>
+
 }
 export const MyPosts: React.FC<MyPostsType> = (props) => {
 
@@ -21,17 +20,13 @@ export const MyPosts: React.FC<MyPostsType> = (props) => {
     const onPostChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
 
         let text = e.currentTarget.value
-        /*props.updateNewPostText(text)*/
-        /*  props.dispatch({type: "UPDATE-NEW-POST-TEXT", newText:text})*/
-
-        props.dispatch(updateNewPostTextAC(text))
+        props.onPostChange(text)
 
     }
-    const addPost = () => {
-        debugger
-        /*props.addNewPost(props.newPostText);*/
-        props.dispatch(addNewPostAC(props.newPostText))
+    const OnAddPost = () => {
 
+        props.addPost(props.newPostText)
+        //console.log('yo')
     }
 
     return (
@@ -47,7 +42,7 @@ export const MyPosts: React.FC<MyPostsType> = (props) => {
                     <textarea onChange={onPostChange} value={props.newPostText}/>
                 </div>
                 <div>
-                    <button onClick={addPost}>Add Post</button>
+                    <button onClick={OnAddPost}>Add Post</button>
                 </div>
 
             </div>

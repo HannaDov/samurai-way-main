@@ -1,5 +1,5 @@
-import { SidebarType} from "./store";
-
+import {ActionTypes, SidebarType} from "./store";
+export type reducerSidebarType=any
 /*export type reducerSidebarType=ReturnType<typeof > | ReturnType<typeof >*/
 /*export const addNewMessageAC = (messageText: string) => {
  return {
@@ -15,7 +15,7 @@ export const updateNewMessageTextAC=(newMessage:string)=>{
  }as const
 }*/
 let initialState ={};
-export const reducerSidebar=(state= initialState, action:any)=>{
+export const reducerSidebar=(state= initialState, action:reducerSidebarType)=>{
 return state
 
 }

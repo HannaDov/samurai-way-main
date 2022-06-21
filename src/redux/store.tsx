@@ -1,5 +1,6 @@
 import {addNewPostAC, reducerProfilePage, reducerProfilePageType, updateNewPostTextAC} from "./reducerPropfilePage";
 import {addNewMessageAC, reducerDialogPage, reducerDialogPageType, updateNewMessageTextAC} from "./reducerDialogPage"
+import {reducerSidebarType} from "./reducerSidebar";
 
 export type messageDataType = {
     id: number
@@ -49,7 +50,7 @@ export type StoreType = {
 }
 /*export type ActionTypes =ReturnType<typeof addNewPostAC> | ReturnType<typeof updateNewPostTextAC> |
     ReturnType<typeof addNewMessageAC>| ReturnType<typeof updateNewMessageTextAC>*/
-export type ActionTypes=reducerDialogPageType|reducerProfilePageType
+export type ActionTypes=reducerDialogPageType | reducerProfilePageType |reducerSidebarType
 /*export const addNewPostAC = (postText: string) => {
     return {
         type: "ADD-NEW-POST",

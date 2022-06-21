@@ -35,7 +35,7 @@ let initialState={
  ],
  newMessageText: ""
 }
-export const reducerDialogPage= (state=initialState, action: ActionTypes)=>{
+export const reducerDialogPage= (state=initialState, action: reducerDialogPageType)=>{
  switch (action.type){
   case "ADD-NEW-MESSAGE":
    const newMessage: messageDataType = {

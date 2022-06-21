@@ -1,9 +1,10 @@
 import React from 'react';
 
 import {SidebarType} from "../../redux/store";
+import {ReduxStoreType} from "../../redux/redux-store";
 
 type SideBarType={
-    state: SidebarType
+    store: ReduxStoreType
 }
 
 export const SideBar:React.FC<SideBarType> =(props) => {
