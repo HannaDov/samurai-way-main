@@ -1,4 +1,4 @@
-import {ActionTypes, postType, ProfilePageType} from "./store";
+
 
 export type reducerProfilePageType=ReturnType<typeof addNewPostAC> | ReturnType<typeof updateNewPostTextAC>
 export const addNewPostAC = (postText: string) => {
@@ -22,19 +22,23 @@ let initialState={
  ],
  newPostText: ""
 }
-export const reducerProfilePage= (state: ProfilePageType = initialState, action: ActionTypes)=>{
+export const reducerProfilePage= (state = initialState, action: reducerProfilePageType)=>{
   switch (action.type){
-  case "ADD-NEW-POST":const newPost: postType = {
+  case "ADD-NEW-POST":const newPost: {
+      id: number
+      message: string
+      likesCount: number
+  } = {
    id: new Date().getTime(),
    message: action.postText,
    likesCount: 0
   }
    state.post.push(newPost);
   state.newPostText = '';
-  return state;
-  case "UPDATE-NEW-POST-TEXT":
-  state.newPostText = action.newText;
-   return state;
+  return state//{...state, post:state.post.push(newPost),newPostText:""};
+      case "UPDATE-NEW-POST-TEXT":
+    state.newPostText = action.newText;
+   return state//{...state, newPostText:action.newText };
   default:
    return state;
    }

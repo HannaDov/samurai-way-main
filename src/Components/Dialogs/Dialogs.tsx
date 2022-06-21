@@ -1,16 +1,12 @@
 import React from 'react';
 import classes from './Dialogs.module.css';
 import {DialogItem} from "./DialogItem/DialogItem";
-import {Message} from "./Message/Message";
-import {ActionTypes, DialogPageType, StoreType} from "../../redux/store";
 import {ReduxStoreType} from "../../redux/redux-store";
 import {MessageContainer} from "./Message/MessageContainer";
 
 
 type DialogType = {
     store: ReduxStoreType
-   // dialogPage: DialogPageType
-    //dispatch: (action: ActionTypes) => void
 
 }
 export const Dialogs: React.FC<DialogType> = (props) => {
