@@ -7,7 +7,7 @@ export const ProfileInfo = () => {
 
             <div>
                 <img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPFRnZ74gkvylB7jhhqlvOrUI3xOONxwCukA&usqp=CAU"/>
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiib6KtY7kL1FtSwPBibH4H9cbZSaLwenwWw&usqp=CAU"/>
             </div>
             <div className={classes.descriptionBlock}>
                 ava+discription

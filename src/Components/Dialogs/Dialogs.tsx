@@ -1,30 +1,29 @@
 import React from 'react';
 import classes from './Dialogs.module.css';
 import {DialogItem} from "./DialogItem/DialogItem";
-import {ReduxStoreType} from "../../redux/redux-store";
-import {MessageContainer} from "./Message/MessageContainer";
+import  {AppStateType} from "../../redux/redux-store";
+import {useSelector} from "react-redux";
+import {dialogDataType} from "../../redux/reducerDialogPage";
+import {Message} from "./Message/Message";
 
 
-type DialogType = {
-    store: ReduxStoreType
 
-}
-export const Dialogs: React.FC<DialogType> = (props) => {
+export const Dialogs = () => {
+let dialogData=useSelector<AppStateType, Array<dialogDataType>>(state=>state.DialogPage.dialogData)
 
-    let dialogsElement = props.store.getState().DialogPage.dialogData.map(el =>
+    let dialogsElement = dialogData.map(el =>
 
         <DialogItem key={el.id} name={el.name} id={el.id}/>
     )
 
 
 
-    let messageElement =<MessageContainer store={props.store}
-
+    let messageElement =<Message/>
   /*  messageText={props.store.getState().DialogPage.messageData}
     newMessageText={props.store.getState().DialogPage.newMessageText}*/
 
     //dispatch={props.store.dispatch.bind(props.store)}
-    />
+
     return (
         <div className={classes.dialogs}>
             <div className={classes.dialogItems}>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 import './App.css';
 import {Header} from "./Components/Header/Header";
 import {NavBar} from "./Components/NavBar/NavBar";
@@ -9,15 +9,16 @@ import {News} from "./Components/News/News";
 import {Setting} from "./Components/Setting/Setting";
 import {SideBar} from "./Components/SideBar/SideBar";
 import {Route} from "react-router-dom";
-import {ReduxStoreType} from "./redux/redux-store";
 
 
-type AppStateType = {
+
+/*
+export type ProviderProps = {
     store: ReduxStoreType
-    //dispatch: (action: ActionTypes) => void
-}
+    children: ReactNode
+}*/
 
-const App: React.FC<AppStateType> = (props) => {
+const App = () => {
 
     //const appState = props.store.getState()
     /*const Route = require("react-router-dom").Route;*/
@@ -30,23 +31,15 @@ const App: React.FC<AppStateType> = (props) => {
             <div className="app-wrapper-content">
 
 
-                <Route path='/dialogs'
-                       render={() => <Dialogs store={props.store}
-                           //dialogPage={appState.dialogPage}
-                           //dispatch={props.store.dispatch.bind(props.store)}
-
-                       />}
-                />
+                <Route path='/dialogs' render={() => <Dialogs/>}/>
 
 
-                <Route path='/profile' render={() => <Profile store={props.store} //profilePage={appState.profilePage}
-                    //dispatch={props.store.dispatch.bind(props.store)}
-                />}
+                <Route path='/profile' render={() => <Profile/>}
                 />
                 <Route path='/news' render={() => <News/>}/>
                 <Route path='/music' render={() => <Music/>}/>
                 <Route path='/setting' render={() => <Setting/>}/>
-                <Route path='/friends' render={() => <SideBar store={props.store}/>}/>
+                <Route path='/friends' render={() => <SideBar/>}/>
             </div>
 
         </div>

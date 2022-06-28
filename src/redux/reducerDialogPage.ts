@@ -1,5 +1,3 @@
-
-
 export type reducerDialogPageType = ReturnType<typeof addNewMessageAC> | ReturnType<typeof updateNewMessageTextAC>
 export const addNewMessageAC = (messageText: string) => {
     return {
@@ -23,7 +21,7 @@ let initialState = {
         {id: 5, name: "Teya"},
         {id: 6, name: "Ivan"},
 
-    ],
+    ] as Array<dialogDataType>,
     messageData: [
         {id: 1, message: "Hi"},
         {id: 2, message: "How are you"},
@@ -32,25 +30,44 @@ let initialState = {
         {id: 5, message: "Yo"},
         {id: 6, message: "Yo"},
 
-    ],
+    ] as Array<messageDataType>,
     newMessageText: ""
 }
-export const reducerDialogPage = (state = initialState, action: reducerDialogPageType) => {
+export type messageDataType = {
+    id: number
+    message: string
+}
+export type dialogDataType = {
+    id: number
+    name: string
+}
+
+export type InitialStateDialogType = typeof initialState
+export const reducerDialogPage = (state: InitialStateDialogType = initialState, action: reducerDialogPageType): InitialStateDialogType => {
     switch (action.type) {
         case "ADD-NEW-MESSAGE":
             const newMessage: {
-                id: number
+                id: number,
                 message: string
             } = {
                 id: new Date().getTime(),
                 message: action.messageText,
             }
-            state.messageData.push(newMessage);
-            state.newMessageText = '';
-            return state;
+            return {
+                ...state, newMessageText: '', messageData: [...state.messageData, newMessage]
+            }
+        /* let stateCopy={...state}
+         stateCopy.messageData=[...state.messageData]
+         stateCopy.messageData.push(newMessage);
+         stateCopy.newMessageText = '';
+         return stateCopy*/
         case "UPDATE-NEW-MESSAGE-TEXT":
-            state.newMessageText = action.newMessage;
-            return state;
+        return {...state,newMessageText:action.newMessage
+           // let stateCopy = {...state}
+           // stateCopy.newMessageText = action.newMessage;
+           // return stateCopy
+        }
+            ;
         default:
             return state;
     }
