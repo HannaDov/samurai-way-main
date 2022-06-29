@@ -9,19 +9,11 @@ import {News} from "./Components/News/News";
 import {Setting} from "./Components/Setting/Setting";
 import {SideBar} from "./Components/SideBar/SideBar";
 import {Route} from "react-router-dom";
+import {Users} from "./Components/Users/Users";
 
-
-
-/*
-export type ProviderProps = {
-    store: ReduxStoreType
-    children: ReactNode
-}*/
 
 const App = () => {
 
-    //const appState = props.store.getState()
-    /*const Route = require("react-router-dom").Route;*/
     return (
 
 
@@ -29,13 +21,10 @@ const App = () => {
             <Header/>
             <NavBar/>
             <div className="app-wrapper-content">
-
-
                 <Route path='/dialogs' render={() => <Dialogs/>}/>
-
-
                 <Route path='/profile' render={() => <Profile/>}
                 />
+                <Route path='/users' render={() => <Users/>}/>
                 <Route path='/news' render={() => <News/>}/>
                 <Route path='/music' render={() => <Music/>}/>
                 <Route path='/setting' render={() => <Setting/>}/>

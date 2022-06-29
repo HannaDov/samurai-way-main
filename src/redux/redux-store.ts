@@ -2,10 +2,12 @@ import {combineReducers, legacy_createStore as createStore} from "redux";
 import {reducerProfilePage} from "./reducerPropfilePage";
 import {reducerDialogPage} from "./reducerDialogPage";
 import {reducerSidebar} from "./reducerSidebar";
+import {reducerUsers} from "./reducerUsers";
 let rootReducer = combineReducers({
     ProfilePage:reducerProfilePage,
     DialogPage:reducerDialogPage,
-    Sidebar:reducerSidebar
+    Sidebar:reducerSidebar,
+    usersPage:reducerUsers
 });
 
 export type RootReducerType= typeof rootReducer
