@@ -7,15 +7,15 @@ export const setUsersAC = (users: Array<UserType> ) => ({type: 'SET_USERS', user
 
 export type UserType={
     id: number,
-    photoUrl:string,
+    photos:{small:string, large:string},
     followed: boolean,
-    fullName: string,
+    name: string,
     status: string,
-    location: LocationType
+   /* location: LocationType*/
 }
-export type  LocationType={
+/*export type  LocationType={
     country: string, city: string
-}
+}*/
 
 let initialState = {
     users: [
