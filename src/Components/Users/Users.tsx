@@ -4,9 +4,8 @@ import {Dispatch} from "redux";
 import {followAC, setUsersAC, unfollowAC, UserType} from "../../redux/reducerUsers";
 import {AppStateType} from "../../redux/redux-store";
 import styles from './Users.module.css';
-import axios, {AxiosResponse} from "axios";
+import axios  from "axios";
 import UserPhoto from "../image/images.png"
-
 
 export type ResponseType = {
     items:Array<UserType>,

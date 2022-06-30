@@ -13,9 +13,9 @@ export type UserType={
     status: string,
    /* location: LocationType*/
 }
-/*export type  LocationType={
+export type  LocationType={
     country: string, city: string
-}*/
+}
 
 let initialState = {
     users: [
