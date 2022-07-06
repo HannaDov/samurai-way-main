@@ -1,4 +1,4 @@
-import React, {ReactNode} from 'react';
+import React from 'react';
 import './App.css';
 import {Header} from "./Components/Header/Header";
 import {NavBar} from "./Components/NavBar/NavBar";
@@ -9,7 +9,8 @@ import {News} from "./Components/News/News";
 import {Setting} from "./Components/Setting/Setting";
 import {SideBar} from "./Components/SideBar/SideBar";
 import {Route} from "react-router-dom";
-import {Users} from "./Components/Users/Users";
+import {UsersContainer} from "./Components/Users/UsersContainer";
+import {Users1} from "./Components/Users/Users1";
 
 
 const App = () => {
@@ -24,7 +25,8 @@ const App = () => {
                 <Route path='/dialogs' render={() => <Dialogs/>}/>
                 <Route path='/profile' render={() => <Profile/>}
                 />
-                <Route path='/users' render={() => <Users/>}/>
+                <Route path='/users' render={() => <UsersContainer/>}/>
+                {/*<Route path='/user' render={() => <Users1/>}/>*/}
                 <Route path='/news' render={() => <News/>}/>
                 <Route path='/music' render={() => <Music/>}/>
                 <Route path='/setting' render={() => <Setting/>}/>
