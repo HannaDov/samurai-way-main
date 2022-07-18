@@ -1,6 +1,5 @@
 import React from 'react';
 import './App.css';
-import {Header} from "./Components/Header/Header";
 import {NavBar} from "./Components/NavBar/NavBar";
 import {Dialogs} from "./Components/Dialogs/Dialogs";
 import {Music} from "./Components/Music/Music";
@@ -10,16 +9,14 @@ import {SideBar} from "./Components/SideBar/SideBar";
 import {Route} from "react-router-dom";
 import {UsersContainer} from "./Components/Users/UsersContainer";
 import {ProfileContainer} from "./Components/Profile/ProfileContainer";
-
+import {HeaderContainer} from "./Components/Header/HeaderContainer";
 
 
 const App = () => {
-
     return (
 
-
         <div className="app-wrapper">
-            <Header/>
+            <HeaderContainer/>
             <NavBar/>
             <div className="app-wrapper-content">
                 <Route path='/dialogs' render={() => <Dialogs/>}/>

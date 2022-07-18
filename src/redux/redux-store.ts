@@ -3,11 +3,13 @@ import {reducerProfilePage} from "./reducerPropfilePage";
 import {reducerDialogPage} from "./reducerDialogPage";
 import {reducerSidebar} from "./reducerSidebar";
 import {reducerUsers} from "./reducerUsers";
+import {authReducer} from "./authReducer";
 let rootReducer = combineReducers({
     ProfilePage:reducerProfilePage,
     DialogPage:reducerDialogPage,
     Sidebar:reducerSidebar,
-    usersPage:reducerUsers
+    usersPage:reducerUsers,
+    auth:authReducer
 });
 
 export type RootReducerType= typeof rootReducer
